@@ -12,8 +12,8 @@ The system utilizes a combination of **Elliptic** and **Notch** filters to achie
 
 ### 1. High Pass Filter (HPF)
 * **Filter Type:** Elliptic IIR.
-* **Purpose:** Removes low-frequency artifacts, specifically **Baseline Wander** (0.5 Hz cutoff) caused by respiration or patient movement.
-* **Characteristics:** chosen for its sharp transition band to effectively block DC offset without attenuating the P-wave.
+* **Purpose:** Removes low-frequency artifacts, specifically **Baseline Wander** (0.5 Hz cutoff).
+* **Characteristics:** Chosen for its sharp transition band to effectively block DC offset without attenuating the P-wave.
 
 ### 2. Low Pass Filter (LPF)
 * **Filter Type:** Elliptic IIR.
@@ -23,7 +23,7 @@ The system utilizes a combination of **Elliptic** and **Notch** filters to achie
 ### 3. Notch Filter
 * **Filter Type:** IIR Notch.
 * **Center Frequency:** 50 Hz.
-* **Purpose:** Specifically designed to reject **Power Line Interference (PLI)** at 50 Hz, a common issue in biomedical signal acquisition.
+* **Purpose:** Specifically designed to reject **Power Line Interference (PLI)** at 50 Hz.
 
 ## 💻 Technologies & Workflow
 The project follows a **Model-Based Design** workflow:
@@ -34,11 +34,11 @@ The project follows a **Model-Based Design** workflow:
 2.  **Fixed-Point Conversion:**
     * Converted the floating-point MATLAB models to an efficient **Fixed-point representation** to optimize hardware performance.
 3.  **Hardware Implementation:**
-    * Used **Simulink HDL Coder** to automatically generate synthesizable Verilog HDL code from the discrete-time model.
+    * Used **Simulink HDL Coder** to automatically generate synthesizable Verilog HDL code.
     * **Tool:** Xilinx Vivado.
 4.  **Verification:**
-    * Verified functionality via Testbench in Vivado.
-    * Validated real-time results on FPGA using the **Integrated Logic Analyzer (ILA)**.
+    * **Data Source:** Used pre-recorded ECG signal samples sourced from the **PhysioNet** database (MIT-BIH Arrhythmia Database).
+    * **On-Chip Debugging:** Validated the hardware processing on FPGA using the **Integrated Logic Analyzer (ILA)** to capture and observe the input/output waveforms directly from the chip.
 
 ## 📊 Results
 * **Raw Signal:** Noisy ECG data with visible baseline drift and 50Hz superposition.
@@ -49,9 +49,9 @@ The project follows a **Model-Based Design** workflow:
 * **Performance Metrics:** Achieved high-fidelity output with a low **Mean Squared Error (MSE)** and improved **Signal-to-Noise Ratio (SNR)**.
 
 ## 📂 Repository Contents
-* `MATLAB_Design/`: MATLAB scripts (.m) for filter coefficient calculation and Simulink models (.slx).
+* `MATLAB_Design/`: MATLAB scripts (.m) and Simulink models (.slx).
 * `RTL/`: Generated Verilog source code.
-* `Simulation/`: Vivado testbench files and waveform screenshots.
+* `Simulation/`: Vivado testbench files and ILA waveform screenshots.
 * `Docs/`: Project report and block diagrams.
 
 ---
