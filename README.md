@@ -36,9 +36,11 @@ The project follows a **Model-Based Design** workflow:
 3.  **Hardware Implementation:**
     * Used **Simulink HDL Coder** to automatically generate synthesizable Verilog HDL code.
     * **Tool:** Xilinx Vivado.
-4.  **Verification:**
-    * **Data Source:** Used pre-recorded ECG signal samples sourced from the **PhysioNet** database (MIT-BIH Arrhythmia Database).
-    * **On-Chip Debugging:** Validated the hardware processing on FPGA using the **Integrated Logic Analyzer (ILA)** to capture and observe the input/output waveforms directly from the chip.
+4.  **Verification (Closed-Loop):**
+    * **Data Source:** Pre-recorded ECG samples from the **PhysioNet** database.
+    * **Simulation:** Performed functional verification via **Testbench** in Vivado.
+    * **Hardware Test:** Validated on-chip processing using **Integrated Logic Analyzer (ILA)**.
+    * **Analysis:** Both Testbench simulation results and ILA captured data were **exported to CSV format** and imported back into **MATLAB** for comparison against the golden model.
 
 ## 📊 Results
 * **Raw Signal:** Noisy ECG data with visible baseline drift and 50Hz superposition.
@@ -49,10 +51,10 @@ The project follows a **Model-Based Design** workflow:
 * **Performance Metrics:** Achieved high-fidelity output with a low **Mean Squared Error (MSE)** and improved **Signal-to-Noise Ratio (SNR)**.
 
 ## 📂 Repository Contents
-* `MATLAB_Design/`: MATLAB scripts (.m) and Simulink models (.slx).
+* `MATLAB_Design/`: MATLAB scripts (.m) for CSV processing and Simulink models (.slx).
 * `RTL/`: Generated Verilog source code.
-* `Simulation/`: Vivado testbench files and ILA waveform screenshots.
-* `Docs/`: Project report and block diagrams.
+* `Simulation/`: Testbench files and CSV outputs.
+* `Docs/`: Project report and ILA waveform screenshots.
 
 ---
 <p align="center">
