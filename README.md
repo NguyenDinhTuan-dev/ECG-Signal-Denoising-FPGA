@@ -56,7 +56,4 @@ The project follows a **Model-Based Design** workflow:
 * `Simulation/`: Testbench files and CSV outputs.
 * `Docs/`: Project report and ILA waveform screenshots.
 
----
-<p align="center">
-  <i>Implemented by Nguyen Dinh Tuan</i>
-</p>
+
